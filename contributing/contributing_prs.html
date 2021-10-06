@@ -1,0 +1,614 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contributing code via pull requests &#8212; ArviZ dev documentation</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/css/blank.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.d53ab927f7bad3eaa42da95908504b10.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Developing in Docker" href="developing_in_docker.html" />
+    <link rel="prev" title="Issue Triaging" href="issue_triaging.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-W1G68W77YV"></script>
+<script>
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){ dataLayer.push(arguments); }
+                    gtag('js', new Date());
+                    gtag('config', 'G-W1G68W77YV');
+                </script>
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
+
+  <div id="navbar-start">
+    
+    
+
+<a class="navbar-brand" href="../index.html">
+  <img src="../_static/logo.png" class="logo" alt="logo">
+</a>
+
+
+    
+    dev
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../getting_started/index.html">
+  Getting Started
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../examples/index.html">
+  Example Gallery
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../user_guide/index.html">
+  User Guide
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../api/index.html">
+  API Reference
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../community.html">
+  Community
+ </a>
+</li>
+
+<li class="toctree-l1 current active nav-item">
+ <a class="reference internal nav-link" href="index.html">
+  Contributing
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../about_us.html">
+  About us
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/arviz-devs/arviz" rel="noopener" target="_blank" title="GitHub">
+            <span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://twitter.com/arviz_devs" rel="noopener" target="_blank" title="Twitter">
+            <span><i class="fab fa-twitter-square"></i></span>
+            <label class="sr-only">Twitter</label>
+          </a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+  
+    
+            
+            <!-- Only show if we have sidebars configured, else just a small margin  -->
+            <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="issue_reports.html">
+   Issue reports
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="issue_triaging.html">
+   Issue Triaging
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Contributing code via pull requests
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="developing_in_docker.html">
+   Developing in Docker
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="developer_guide.html">
+   Developer Guide
+  </a>
+ </li>
+</ul>
+
+  </div>
+</nav>
+            </div>
+            
+          
+  
+
+
+          
+  
+    
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+            
+              
+              <div class="toc-item">
+                
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Contributing code via pull requests
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#steps-before-starting-work">
+     Steps before starting work
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#if-an-issue-ticket-exists">
+       If an issue ticket exists
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#if-an-issue-ticket-doesn-t-exist">
+       If an issue ticket doesn’t exist
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#in-the-event-of-a-conflict">
+       In the event of a conflict
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#if-the-issue-ticket-has-someone-assigned-to-it">
+       If the issue ticket has someone assigned to it
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#development-process-summary">
+   Development process - summary
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#code-formatting">
+     Code Formatting
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#docstring-formatting-and-type-hints">
+     Docstring formatting and type hints
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#documentation-for-user-facing-methods">
+     Documentation for user facing methods
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#tests">
+     Tests
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#steps">
+   Steps
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pull-request-checklist">
+   Pull request checklist
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#running-the-benchmark-tests">
+   Running the benchmark tests
+  </a>
+ </li>
+</ul>
+
+</nav>
+              </div>
+              
+              <div class="toc-item">
+                
+              </div>
+              
+            
+          </div>
+          
+  
+
+
+          
+  
+    
+          
+            
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <div class="section" id="contributing-code-via-pull-requests">
+<h1>Contributing code via pull requests<a class="headerlink" href="#contributing-code-via-pull-requests" title="Permalink to this headline">¶</a></h1>
+<p>While issue reporting is valuable, we strongly encourage users who are
+inclined to do so to submit patches for new or existing issues via pull
+requests. This is particularly the case for simple fixes, such as typos
+or tweaks to documentation, which do not require a heavy investment
+of time and attention.</p>
+<p>Contributors are also encouraged to contribute new code to enhance ArviZ’s
+functionality, also via pull requests.
+Please consult the <a class="reference external" href="https://arviz-devs.github.io/arviz/">ArviZ documentation</a>
+to ensure that any new contribution does not strongly overlap with existing
+functionality and open a “Feature Request” issue before starting to work
+on the new feature.</p>
+<div class="section" id="steps-before-starting-work">
+<h2>Steps before starting work<a class="headerlink" href="#steps-before-starting-work" title="Permalink to this headline">¶</a></h2>
+<p>Before starting work on a pull request double-check that no one else
+is working on the ticket in both issue tickets and pull requests.</p>
+<p>ArviZ is a community-driven project and always has multiple people working
+on it simultaneously. These guidelines define a set of rules to ensure
+that we all make the most of our time and we don’t have two contributors
+working on the same changes. Let’s see what to do when you encounter the following scenarios:</p>
+<div class="section" id="if-an-issue-ticket-exists">
+<h3>If an issue ticket exists<a class="headerlink" href="#if-an-issue-ticket-exists" title="Permalink to this headline">¶</a></h3>
+<p>If an issue exists check the ticket to ensure no one else has started working on it. If you are first to start work, comment on the ticket to make it evident to others. If the comment looks old or abandoned leave a comment asking if you may start work.</p>
+</div>
+<div class="section" id="if-an-issue-ticket-doesn-t-exist">
+<h3>If an issue ticket doesn’t exist<a class="headerlink" href="#if-an-issue-ticket-doesn-t-exist" title="Permalink to this headline">¶</a></h3>
+<p>Open an issue ticket for the issue and state that you’ll be solving the issue with a pull request. Optionally create a pull request and add <code class="docutils literal notranslate"><span class="pre">[WIP]</span></code> in the title to indicate Work in Progress.</p>
+</div>
+<div class="section" id="in-the-event-of-a-conflict">
+<h3>In the event of a conflict<a class="headerlink" href="#in-the-event-of-a-conflict" title="Permalink to this headline">¶</a></h3>
+<p>In the event of two or more people working on the same issue, the general precedence will go to the person who first commented on the issue. If no comments it will go to the first person to submit a PR for review. Each situation will differ though, and the core contributors will make the best judgment call if needed.</p>
+</div>
+<div class="section" id="if-the-issue-ticket-has-someone-assigned-to-it">
+<h3>If the issue ticket has someone assigned to it<a class="headerlink" href="#if-the-issue-ticket-has-someone-assigned-to-it" title="Permalink to this headline">¶</a></h3>
+<p>If the issue is assigned then precedence goes to the assignee. However, if there has been no activity for 2 weeks from the assignment date, the ticket is open for all again and can be unassigned.</p>
+</div>
+</div>
+</div>
+<div class="section" id="development-process-summary">
+<span id="dev-summary"></span><h1>Development process - summary<a class="headerlink" href="#development-process-summary" title="Permalink to this headline">¶</a></h1>
+<p>The preferred workflow for contributing to ArviZ is to fork
+the <a class="reference external" href="https://github.com/arviz-devs/arviz/">GitHub repository</a>,
+clone it to your local machine, and develop on a feature branch. the details of this process are listed on
+<a class="reference internal" href="#pr-checklist"><span class="std std-ref">Pull request checklist</span></a>. For a detailed
+description of the recommended development process, see <a class="reference internal" href="developer_guide.html#developer-guide"><span class="std std-ref">Developer Guide</span></a>.</p>
+<div class="section" id="code-formatting">
+<h2>Code Formatting<a class="headerlink" href="#code-formatting" title="Permalink to this headline">¶</a></h2>
+<p>For code generally follow the
+<a class="reference external" href="https://www.tensorflow.org/community/contribute/code_style">TensorFlow’s style guide</a>
+or the <a class="reference external" href="https://github.com/google/styleguide/blob/gh-pages/pyguide.md">Google style guide</a>.
+Both more or less follow PEP 8.</p>
+<p>Final formatting is done with <a class="reference external" href="https://github.com/ambv/black">black</a>.</p>
+</div>
+<div class="section" id="docstring-formatting-and-type-hints">
+<h2>Docstring formatting and type hints<a class="headerlink" href="#docstring-formatting-and-type-hints" title="Permalink to this headline">¶</a></h2>
+<p>Docstrings should follow the
+<a class="reference external" href="https://numpydoc.readthedocs.io/en/latest/format.html">numpy docstring guide</a>.
+Extra guidance can also be found in
+<a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/development/contributing_docstring.html">pandas docstring guide</a>.
+Please reasonably document any additions or changes to the codebase,
+when in doubt, add a docstring.</p>
+<p>The different formatting and aim between numpydoc style type description and
+<a class="reference external" href="https://docs.python.org/3/library/typing.html">type hints</a>
+should be noted. numpydoc style targets docstrings and aims to be human
+readable whereas type hints target function definitions and <code class="docutils literal notranslate"><span class="pre">.pyi</span></code> files and
+aim to help third party tools such as type checkers or IDEs. ArviZ does not
+require functions to include type hints
+however contributions including them are welcome.</p>
+</div>
+<div class="section" id="documentation-for-user-facing-methods">
+<h2>Documentation for user facing methods<a class="headerlink" href="#documentation-for-user-facing-methods" title="Permalink to this headline">¶</a></h2>
+<p>If changes are made to a method documented in the <a class="reference internal" href="../api/index.html#api"><span class="std std-ref">ArviZ API Guide</span></a>
+please consider adding inline documentation examples.
+You can refer to <a class="reference internal" href="../api/generated/arviz.plot_posterior.html#arviz.plot_posterior" title="arviz.plot_posterior"><code class="xref py py-func docutils literal notranslate"><span class="pre">az.plot_posterior</span></code></a> for a good example.</p>
+</div>
+<div class="section" id="tests">
+<h2>Tests<a class="headerlink" href="#tests" title="Permalink to this headline">¶</a></h2>
+<p>Section in construction</p>
+</div>
+</div>
+<div class="section" id="steps">
+<h1>Steps<a class="headerlink" href="#steps" title="Permalink to this headline">¶</a></h1>
+<ol>
+<li><p>Fork the <a class="reference external" href="https://github.com/arviz-devs/arviz/">project repository</a> by clicking on the ‘Fork’ button near the top right of the main repository page. This creates a copy of the code under your GitHub user account.</p></li>
+<li><p>Clone your fork of the ArviZ repo from your GitHub account to your local disk.</p>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="992f4ccb-eac2-45b3-ad45-5c48699a2e69" name="9874ae0c-cf3a-49ad-b167-695eab778b7d" type="radio">
+</input><label class="sd-tab-label" data-sync-id="ssh" for="992f4ccb-eac2-45b3-ad45-5c48699a2e69">
+SSH</label><div class="sd-tab-content docutils">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git clone git@github.com:&lt;your GitHub handle&gt;/arviz.git
+</pre></div>
+</div>
+</div>
+<input id="5b01828d-b80c-485d-87e1-af41f5b7de84" name="9874ae0c-cf3a-49ad-b167-695eab778b7d" type="radio">
+</input><label class="sd-tab-label" data-sync-id="https" for="5b01828d-b80c-485d-87e1-af41f5b7de84">
+HTTPS</label><div class="sd-tab-content docutils">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git clone https://github.com/&lt;your GitHub handle&gt;/arviz.git
+</pre></div>
+</div>
+</div>
+</div>
+</li>
+<li><p>Navigate to your arviz directory and add the base repository as a remote:</p>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="fb7d09a1-481d-4abf-97d2-7e85fcd494b8" name="a251d0a4-3792-4dc8-a7f3-887e87c44fce" type="radio">
+</input><label class="sd-tab-label" data-sync-id="ssh" for="fb7d09a1-481d-4abf-97d2-7e85fcd494b8">
+SSH</label><div class="sd-tab-content docutils">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cd arviz
+$ git remote add upstream git@github.com:arviz-devs/arviz.git
+</pre></div>
+</div>
+</div>
+<input id="1c11802e-8407-434d-a36b-175a62f53d69" name="a251d0a4-3792-4dc8-a7f3-887e87c44fce" type="radio">
+</input><label class="sd-tab-label" data-sync-id="https" for="1c11802e-8407-434d-a36b-175a62f53d69">
+HTTPS</label><div class="sd-tab-content docutils">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cd arviz
+$ git remote add upstream https://github.com/arviz-devs/arviz
+</pre></div>
+</div>
+</div>
+</div>
+</li>
+<li><p>Create a <code class="docutils literal notranslate"><span class="pre">feature</span></code> branch to hold your development changes:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git checkout -b my-feature
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Always create a new <code class="docutils literal notranslate"><span class="pre">feature</span></code> branch before making any changes. Make your chnages
+in the <code class="docutils literal notranslate"><span class="pre">feature</span></code> branch. It’s good practice to never routinely work on the <code class="docutils literal notranslate"><span class="pre">main</span></code> branch of any repository.</p>
+</div>
+</li>
+<li><p>Project requirements are in <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code>, and libraries used for development are in <code class="docutils literal notranslate"><span class="pre">requirements-dev.txt</span></code>.  To set up a development environment, you may (probably in a <a class="reference external" href="https://docs.python-guide.org/dev/virtualenvs/">virtual environment</a>) run:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ pip install -r requirements.txt
+$ pip install -r requirements-dev.txt
+$ pip install -r requirements-docs.txt  <span class="c1"># to generate docs locally</span>
+</pre></div>
+</div>
+<p>Alternatively, for developing the project in <a class="reference external" href="https://docs.docker.com/">Docker</a>, there is a script to setup the Docker environment for development. See <a class="reference internal" href="developing_in_docker.html#developing-in-docker"><span class="std std-ref">Developing in Docker</span></a>.</p>
+</li>
+<li><p>Develop the feature on your feature branch. Add your changes using git commands, <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span></code> and then <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span></code>, like:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git add modified_files
+$ git commit -m <span class="s2">&quot;commit message here&quot;</span>
+</pre></div>
+</div>
+<p>to record your changes locally.
+After committing, it is a good idea to sync with the base repository in case there have been any changes:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git fetch upstream
+$ git rebase upstream/main
+</pre></div>
+</div>
+<p>Then push the changes to your GitHub account with:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git push -u origin my-feature
+</pre></div>
+</div>
+</li>
+<li><p>Go to the GitHub web page of your fork of the ArviZ repo. Click the ‘Pull request’ button to send your changes to the project’s maintainers for review. This will send an email to the committers.</p></li>
+</ol>
+</div>
+<div class="section" id="pull-request-checklist">
+<span id="pr-checklist"></span><h1>Pull request checklist<a class="headerlink" href="#pull-request-checklist" title="Permalink to this headline">¶</a></h1>
+<p>We recommend that your contribution complies with the following guidelines before you submit a pull request:</p>
+<ul class="simple">
+<li><p>If your pull request addresses an issue, please use the pull request title to describe the issue and mention the issue number in the pull request description. This will make sure a link back to the original issue is created.</p></li>
+<li><p>All public methods must have informative docstrings with sample usage when appropriate.</p></li>
+<li><p>Please prefix the title of incomplete contributions with <code class="docutils literal notranslate"><span class="pre">[WIP]</span></code> (to indicate a work in progress). WIPs may be useful to (1) indicate you are working on something to avoid duplicated work, (2) request a broad review of functionality or API, or (3) seek collaborators.</p></li>
+<li><p>All other tests pass when everything is rebuilt from scratch.
+See <a class="reference internal" href="developing_in_docker.html#developing-in-docker"><span class="std std-ref">Developing in Docker</span></a> for information on running the test suite locally.</p></li>
+<li><p>When adding additional plotting functionality, provide at least one example script in the <a class="reference external" href="https://github.com/arviz-devs/arviz/tree/main/examples">arviz/examples/</a> folder. Have a look at other examples for reference. Examples should demonstrate why the new functionality is useful in practice and, if possible, compare it to other methods available in ArviZ.</p></li>
+<li><p>Added tests follow the <a class="reference external" href="https://docs.pytest.org/en/latest/fixture.html#fixture">pytest fixture pattern</a>.</p></li>
+<li><p>Documentation and high-coverage tests are necessary for enhancements to be accepted.</p></li>
+<li><p>Documentation follows Numpy style guide.</p></li>
+<li><p>Run any of the pre-existing examples in <code class="docutils literal notranslate"><span class="pre">docs/source/notebooks</span></code> that contain analyses that would be affected by your changes to ensure that nothing breaks. This is a useful opportunity to not only check your work for bugs that might not be revealed by unit test, but also to show how your contribution improves ArviZ for end users.</p></li>
+<li><p>If modifying a plot, render your plot to inspect for changes and copy image in the pull request message on Github.</p></li>
+</ul>
+<p>You can also check for common programming errors with the following
+tools:</p>
+<ul>
+<li><p>Save plots as part of tests. Plots will be saved to a directory named <code class="docutils literal notranslate"><span class="pre">test_images</span></code> by default.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ pytest arviz/tests/base_tests/&lt;name of test&gt;.py --save
+</pre></div>
+</div>
+</li>
+<li><p>Optionally save plots to a user named directory. This is useful for comparing changes across branches.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ pytest arviz/tests/base_tests/&lt;name of test&gt;.py --save user_defined_directory
+</pre></div>
+</div>
+</li>
+<li><p>Code coverage <strong>cannot</strong> decrease. Coverage can be checked with <strong>pytest-cov</strong> package:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ pip install pytest pytest-cov coverage
+$ pytest --cov<span class="o">=</span>arviz --cov-report<span class="o">=</span>html arviz/tests/
+</pre></div>
+</div>
+</li>
+<li><p>Your code has been formatted with <a class="reference external" href="https://github.com/ambv/black">black</a> with a line length of 100 characters.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ pip install black
+$ black arviz/ examples/ asv_benchmarks/
+</pre></div>
+</div>
+</li>
+<li><p>Your code passes pylint</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ pip install pylint
+$ pylint arviz/
+</pre></div>
+</div>
+</li>
+<li><p>No code style warnings, check with:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ ./scripts/lint.sh
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+<div class="section" id="running-the-benchmark-tests">
+<h1>Running the benchmark tests<a class="headerlink" href="#running-the-benchmark-tests" title="Permalink to this headline">¶</a></h1>
+<p>To run the <strong>benchmark tests</strong> do the following:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$ pip install asv
+$ cd arviz
+$ asv run
+</pre></div>
+</div>
+<p><strong>This guide was derived from the <a class="reference external" href="https://github.com/scikit-learn/scikit-learn/blob/main/CONTRIBUTING.md">scikit-learn guide to contributing</a></strong>.</p>
+</div>
+
+
+              </div>
+              
+              
+              <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="issue_triaging.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Issue Triaging</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="developing_in_docker.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Developing in Docker</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+              
+          </main>
+          
+  
+
+
+      </div>
+    </div>
+
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+<script>
+  $(document).ready(function () {
+    const content = $('<div class="alert-info">Help us improve our documentation answering this  <a href="https://docs.google.com/forms/d/e/1FAIpQLSdm98VJvKad6V7V-s6Dg5vk34Dyc17fnFBtAOBcaaQ7In7eUw/viewform">~2min survey</a></div>')
+    $('#banner').append(content);
+  })
+</script><footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    
+    <div class="footer-item">
+      <p class="copyright">
+    &copy; Copyright 2018, ArviZ devs.<br>
+</p>
+    </div>
+    
+    <div class="footer-item">
+      <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.4.<br>
+</p>
+    </div>
+    
+  </div>
+</footer>
+  </body>
+</html>
